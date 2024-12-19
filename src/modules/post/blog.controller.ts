@@ -1,18 +1,21 @@
 import {
-	Body,
-	Controller,
-	Delete,
-	Get,
-	Param,
-	Post,
-	Put,
-	Query,
+    Body,
+    Controller,
+    Delete,
+    Get,
+    Param,
+    Post,
+    Put,
+    Query,
+    UseGuards,
 } from '@nestjs/common'
+import { AuthGuard } from '@nestjs/passport'
 import { QueryParams, SingleQueryParams } from '../base'
 import { BlogService } from './blog.service'
 import { Blog } from './entities/blog.entity'
 
 @Controller('posts')
+@UseGuards(AuthGuard())
 export class BlogController {
     constructor(private readonly blogService: BlogService) {}
 

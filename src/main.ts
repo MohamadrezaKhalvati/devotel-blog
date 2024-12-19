@@ -1,7 +1,7 @@
 import {
-	BadRequestException,
-	INestApplication,
-	ValidationPipe,
+    BadRequestException,
+    INestApplication,
+    ValidationPipe,
 } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
@@ -32,11 +32,7 @@ async function enableGlobalValidations(app: INestApplication) {
             },
         }),
     )
-    app.enableCors({
-        origin: '*',
-        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        allowedHeaders: 'Content-Type, Accept',
-    })
+    app.enableCors()
 }
 
 async function setupSwagger(app: INestApplication) {

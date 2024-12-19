@@ -1,1 +1,5 @@
-{}
+{
+  "projects": {
+    "default": "devotel-blog-224e3"
+  }
+}
