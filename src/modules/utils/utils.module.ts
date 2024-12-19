@@ -9,7 +9,6 @@ import { ThrottlerModule } from '@nestjs/throttler'
 import * as path from 'path'
 import { DatabaseModule } from '../database/database.module'
 import { FileHelpers } from './Helpers/file-helpers'
-import { UsersHelpersService } from './Helpers/users-helpers.service'
 import { UtilsService } from './utils.service'
 @Module({
     imports: [
@@ -29,17 +28,8 @@ import { UtilsService } from './utils.service'
             rootPath: path.join(__dirname, '../..', 'public'),
             serveRoot: '/public',
         }),
-
-        // MelipayamakModule.registerAsync({
-        //     imports: [ConfigModule],
-        //     inject: [ConfigService],
-        //     useFactory: (configService: ConfigService) => ({
-        //         phone_number: configService.get<string>('SMS_USERNAME'),
-        //         password: configService.get<string>('SMS_PASSWORD'),
-        //     }),
-        // }),
     ],
-    providers: [UtilsService, FileHelpers, UsersHelpersService],
-    exports: [UtilsService, FileHelpers, UsersHelpersService],
+    providers: [UtilsService, FileHelpers],
+    exports: [UtilsService, FileHelpers],
 })
 export class UtilsModule {}

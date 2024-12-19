@@ -1,7 +1,7 @@
 import {
 	BadRequestException,
 	INestApplication,
-	ValidationPipe
+	ValidationPipe,
 } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
@@ -68,8 +68,8 @@ async function setupSwagger(app: INestApplication) {
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule)
-
-	setupSwagger(app)
+    enableGlobalValidations(app)
+    setupSwagger(app)
     await app.listen(process.env.APP_PORT ?? 3000)
 }
 bootstrap()
