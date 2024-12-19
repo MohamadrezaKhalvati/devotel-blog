@@ -1,5 +1,6 @@
 import { BaseEntity } from 'src/modules/base'
-import { Column, Entity } from 'typeorm'
+import { Upload } from 'src/modules/upload/entities/upload.entity'
+import { Column, Entity, OneToMany, Relation } from 'typeorm'
 
 @Entity()
 export class Blog extends BaseEntity {
@@ -11,4 +12,7 @@ export class Blog extends BaseEntity {
 
     @Column({ nullable: true, type: 'varchar' })
     imageUrl?: string
+
+    @OneToMany('Upload', 'blogs', { cascade: true })
+    upload: Relation<Upload[]>
 }
