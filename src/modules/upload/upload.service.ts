@@ -11,6 +11,7 @@ import { Repository } from 'typeorm'
 import { BaseService } from '../base'
 import { CreateUploadDto } from './dto/create-upload.dto'
 import { Upload } from './entities/upload.entity'
+import { CreateImageInterface } from './types/create-image.interface'
 
 @Injectable()
 export class UploadService extends BaseService<Upload> implements OnModuleInit {
@@ -51,5 +52,10 @@ export class UploadService extends BaseService<Upload> implements OnModuleInit {
                 }
             },
         )
+    }
+
+    createOne(files: CreateImageInterface[]) {
+        console.log('> files ', files)
+        return this.uploadRepository.insert(files as Partial<Upload>)
     }
 }
